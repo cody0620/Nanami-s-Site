@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七海網 ｜ 用愛與肉肉建造</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ====== 導覽列 ====== -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-left">
+                <a href="#top" class="nav-logo">
+                    <i class="fa-solid fa-paw"></i>
+                    <span data-i18n="nav.brand">七海網</span>
+                </a>
+                <div class="lang-switch" id="langSwitch">
+                    <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+                        <i class="fa-solid fa-globe"></i>
+                        <span id="langCurrent">中文</span>
+                        <i class="fa-solid fa-angle-down lang-caret"></i>
+                    </button>
+                    <ul class="lang-menu" id="langMenu" role="listbox">
+                        <li><button data-lang="zh" role="option">中文</button></li>
+                        <li><button data-lang="en" role="option">English</button></li>
+                        <li><button data-lang="ja" role="option">日本語</button></li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#timer" data-i18n="nav.timer">時光罐</a></li>
+                <li><a href="#gallery" data-i18n="nav.gallery">相簿</a></li>
+                <li><a href="#shop" data-i18n="nav.shop">購物</a></li>
+                <li><a href="#map" data-i18n="nav.map">氣味地圖</a></li>
+                <li><a href="#subscribe" data-i18n="nav.subscribe">訂閱</a></li>
+                <li><a href="#links" data-i18n="nav.links">連結</a></li>
+            </ul>
+            <button class="cart-btn" id="cartBtn" aria-label="購物車">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ====== 首頁橫幅輪播 ====== -->
+    <header class="hero" id="top">
+        <div class="carousel" id="carousel">
+            <div class="carousel-track">
+                <div class="slide active"><img src="images/lobby/lobby_1.png" alt="七海日常一" loading="eager"></div>
+                <div class="slide"><img src="images/lobby/lobby_2.png" alt="七海日常二" loading="lazy"></div>
+                <div class="slide"><img src="images/lobby/lobby_3.png" alt="七海日常三" loading="lazy"></div>
+            </div>
+            <div class="hero-overlay">
+                <h1 class="hero-title" data-i18n="hero.title">七海的網站</h1>
+                <p class="hero-sub" data-i18n="hero.sub">welcome to nanami&#39;s little world</p>
+            </div>
+            <div class="carousel-dots" id="dots"></div>
+        </div>
+    </header>
+
+    <!-- ====== 七海計時器（幸福罐） ====== -->
+    <section class="section section-timer" id="timer">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="timer.eyebrow">days &amp; days</span>
+                <h2 class="section-title" data-i18n="timer.title">七海的時光罐</h2>
+                <p class="section-desc" data-i18n="timer.desc">每一天，都是一塊小骨頭，一點一點疊滿幸福。</p>
+            </div>
+
+            <div class="jars">
+                <!-- 幸福罐 1：出生天數 -->
+                <div class="jar-card">
+                    <div class="jar-wrap">
+                        <svg class="jar-svg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <clipPath id="jarClipBirth">
+                                    <path d="M40,70 Q40,60 50,60 L150,60 Q160,60 160,70 L160,230 Q160,245 145,245 L55,245 Q40,245 40,230 Z" />
+                                </clipPath>
+                                <linearGradient id="liquidBirth" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#FFD9A8" stop-opacity="0.85"/>
+                                    <stop offset="100%" stop-color="#F5B26B" stop-opacity="0.95"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- 罐身陰影 -->
+                            <ellipse cx="100" cy="248" rx="60" ry="6" fill="#000" opacity="0.08"/>
+                            <!-- 罐身玻璃 -->
+                            <path d="M40,70 Q40,60 50,60 L150,60 Q160,60 160,70 L160,230 Q160,245 145,245 L55,245 Q40,245 40,230 Z"
+                                  fill="#fff" opacity="0.55" stroke="#D9C5AE" stroke-width="2.5"/>
+                            <!-- 填充內容物（在 clipPath 內） -->
+                            <g clip-path="url(#jarClipBirth)">
+                                <rect class="jar-fill" id="fillBirth" x="40" y="245" width="120" height="0" fill="url(#liquidBirth)"/>
+                                <g id="bonesBirth" class="bones"></g>
+                            </g>
+                            <!-- 玻璃高光 -->
+                            <path d="M52,80 L52,210" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+                            <!-- 罐口 -->
+                            <rect x="36" y="50" width="128" height="14" rx="6" fill="#E8C7A5" stroke="#C9A988" stroke-width="2"/>
+                            <!-- 罐蓋 -->
+                            <rect x="44" y="36" width="112" height="18" rx="7" fill="#C97B5A"/>
+                            <rect x="48" y="38" width="104" height="5" rx="2" fill="#E8997A" opacity="0.7"/>
+                            <!-- 標籤 -->
+                            <rect x="60" y="155" width="80" height="38" rx="5" fill="#FFF8EE" stroke="#D9C5AE" stroke-width="1.5"/>
+                        </svg>
+                        <div class="jar-label-text">
+                            <span class="jar-num" id="numBirth">0</span>
+                            <span class="jar-unit" data-i18n="timer.unit">天</span>
+                        </div>
+                    </div>
+                    <h3 class="jar-title" data-i18n="timer.birth">出生天數</h3>
+                    <p class="jar-sub">since 2022.11.16</p>
+                </div>
+
+                <!-- 幸福罐 2：成為家人 -->
+                <div class="jar-card">
+                    <div class="jar-wrap">
+                        <svg class="jar-svg" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <clipPath id="jarClipFamily">
+                                    <path d="M40,70 Q40,60 50,60 L150,60 Q160,60 160,70 L160,230 Q160,245 145,245 L55,245 Q40,245 40,230 Z" />
+                                </clipPath>
+                                <linearGradient id="liquidFamily" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#FBC8C8" stop-opacity="0.85"/>
+                                    <stop offset="100%" stop-color="#E59797" stop-opacity="0.95"/>
+                                </linearGradient>
+                            </defs>
+                            <ellipse cx="100" cy="248" rx="60" ry="6" fill="#000" opacity="0.08"/>
+                            <path d="M40,70 Q40,60 50,60 L150,60 Q160,60 160,70 L160,230 Q160,245 145,245 L55,245 Q40,245 40,230 Z"
+                                  fill="#fff" opacity="0.55" stroke="#D9C5AE" stroke-width="2.5"/>
+                            <g clip-path="url(#jarClipFamily)">
+                                <rect class="jar-fill" id="fillFamily" x="40" y="245" width="120" height="0" fill="url(#liquidFamily)"/>
+                                <g id="bonesFamily" class="bones"></g>
+                            </g>
+                            <path d="M52,80 L52,210" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+                            <rect x="36" y="50" width="128" height="14" rx="6" fill="#E8C7A5" stroke="#C9A988" stroke-width="2"/>
+                            <rect x="44" y="36" width="112" height="18" rx="7" fill="#A75D6E"/>
+                            <rect x="48" y="38" width="104" height="5" rx="2" fill="#D08896" opacity="0.7"/>
+                            <rect x="60" y="155" width="80" height="38" rx="5" fill="#FFF8EE" stroke="#D9C5AE" stroke-width="1.5"/>
+                        </svg>
+                        <div class="jar-label-text">
+                            <span class="jar-num" id="numFamily">0</span>
+                            <span class="jar-unit" data-i18n="timer.unit">天</span>
+                        </div>
+                    </div>
+                    <h3 class="jar-title" data-i18n="timer.family">成為家人</h3>
+                    <p class="jar-sub">since 2023.01.20</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 七海精選相簿 ====== -->
+    <section class="section section-gallery" id="gallery">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="gallery.eyebrow">memories</span>
+                <h2 class="section-title" data-i18n="gallery.title">七海精選相簿</h2>
+                <p class="section-desc" data-i18n="gallery.desc">收藏每一個值得停下來的瞬間。</p>
+            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- ====== 七海購物 ====== -->
+    <section class="section section-shop" id="shop">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="shop.eyebrow">nanami&#39;s shop</span>
+                <h2 class="section-title" data-i18n="shop.title">七海購物</h2>
+                <p class="section-desc" data-i18n="shop.desc">把對七海的愛，輕輕放進購物籃。</p>
+            </div>
+            <div class="shop-grid" id="shopGrid"></div>
+        </div>
+    </section>
+
+    <!-- ====== 氣味地圖 + 今日小語 ====== -->
+    <section class="section section-map" id="map">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="map.eyebrow">today&#39;s scent</span>
+                <h2 class="section-title" data-i18n="map.title">氣味地圖</h2>
+                <p class="section-desc" data-i18n="map.desc">今天的七海，正想著什麼呢？</p>
+            </div>
+            <div class="map-wrap">
+                <img src="images/map/map.png" alt="氣味地圖" class="map-img">
+                <div class="map-character">
+                    <img src="images/map/inferior_left.png" alt="七海" class="map-nanami">
+                    <div class="speech-bubble" id="speechBubble">
+                        <p id="dailyQuote">載入中⋯</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== 訂閱七海 ====== -->
+    <section class="section section-subscribe" id="subscribe">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="sub.eyebrow">subscribe</span>
+                <h2 class="section-title" data-i18n="sub.title">訂閱七海的服務</h2>
+                <p class="section-desc" data-i18n="sub.desc">選一個適合你的方案，加入七海的小宇宙。</p>
+            </div>
+            <div class="plans-grid" id="plansGrid"></div>
+            <p class="plans-note"><span data-i18n="sub.current">＊ 目前已選擇方案：</span><strong id="currentPlanName">免費方案</strong></p>
+        </div>
+    </section>
+
+    <!-- ====== 外部連結 ====== -->
+    <section class="section section-links" id="links">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow" data-i18n="links.eyebrow">find nanami</span>
+                <h2 class="section-title" data-i18n="links.title">在別的地方找七海</h2>
+            </div>
+            <div class="links-grid">
+                <!-- 連結 1：七海臉書（如要修改連結，請改下面 href） -->
+                <a class="link-card" href="https://www.facebook.com/qi.hai.729737" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span data-i18n="links.fb">七海臉書</span>
+                </a>
+                <!-- 連結 2：七海塔羅 / AI 聊天 -->
+                <a class="link-card" href="https://ai-chat-mu-self.vercel.app/" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span data-i18n="links.tarot">七海塔羅 ・ AI 聊天</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== Footer ====== -->
+    <footer class="footer">
+        <p data-i18n="footer">© 七海網 ｜ 用愛與肉肉建造</p>
+    </footer>
+
+    <!-- ====== 購物車側邊欄 ====== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-panel" id="cartPanel" aria-hidden="true">
+        <div class="cart-header">
+            <h3 data-i18n="cart.title">購物籃</h3>
+            <button class="cart-close" id="cartClose" aria-label="關閉"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cartBody"></div>
+        <div class="cart-footer">
+            <div class="promo">
+                <input type="text" id="promoInput" data-i18n-placeholder="cart.promoPh" placeholder="輸入優惠碼" aria-label="優惠碼">
+                <button id="promoBtn" data-i18n="cart.apply">套用</button>
+            </div>
+            <p class="promo-msg" id="promoMsg"></p>
+            <div class="cart-total">
+                <span data-i18n="cart.total">總金額</span>
+                <strong id="cartTotal">$0</strong>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">
+                <i class="fa-solid fa-heart"></i> <span data-i18n="cart.checkout">結帳</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ====== 燈箱 ====== -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="關閉"><i class="fa-solid fa-xmark"></i></button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <!-- ====== 訂閱確認模態 ====== -->
+    <div class="modal" id="subscribeModal" aria-hidden="true">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose" aria-label="關閉"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-icon"><i class="fa-solid fa-paw"></i></div>
+            <h3 class="modal-title" id="modalTitle">感謝你訂閱七海</h3>
+            <p class="modal-desc" id="modalDesc"></p>
+            <div class="modal-actions" id="modalActions"></div>
+        </div>
+    </div>
+
+    <!-- ====== 親親動畫覆蓋層 ====== -->
+    <div class="kiss-overlay" id="kissOverlay" aria-hidden="true">
+        <img src="images/kiss.png" alt="kiss" id="kissImg">
+    </div>
+    <audio id="kissAudio" src="images/kiss.mp3" preload="auto"></audio>
+
+    <!-- ====== Toast 提示 ====== -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
